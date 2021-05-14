@@ -85,29 +85,28 @@ def main():
 		gamePlay()
 
 def moveUp():
-        checkMove(player.get('x') - 1, 0)
-        player['x'] = player.get('x') - 1
-        print( player.get('x'))
+    checkMove(player.get('x') - 1, 0)
+    player['x'] = player.get('x') - 1
+
+
 def moveDown():
-	print('move down')
-	#make sure they move down
+    checkMove(player.get('x') + 1, 0)
+    player['x'] = player.get('x') + 1 
 
 def moveRight():
-	print('move right')
-	#make sure they move right
+    checkMove(0, player.get('y') + 1)
+    player['y'] = player.get('y') + 1
 
 def moveLeft():
-	print('move left')
-	#make sure they move left
+    checkMove(0, player.get('y') - 1)
+    player['y'] = player.get('y') - 1
 
 def checkMove(x, y):
-        try:
-                levels.get('level2')[x][y] = player.get('name') 
-        except:
-                chooseMove('error') 
-
-def fightRun():
-        print('Calculations for the players')
+    if x not in range(0, grid):
+        chooseMove('error') 
+    
+    if y not in range(0,grid):
+        chooseMove('error')
         
 def checkSqure():
         #check if they are in line with the a fire or wolf or treasure
@@ -137,7 +136,7 @@ def chooseMove(place):
                         moveUp()
                         break
                 elif playerDirection == '2':
-                        moveRight()
+                        moveDown()
                         break
                 elif playerDirection == '3':
                         moveLeft()
